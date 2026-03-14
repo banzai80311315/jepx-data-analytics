@@ -32,12 +32,15 @@ Poisson process with lognormal intensity
 $$
 X_t | Y_t  \sim Poisson(\lambda(Y_t))
 $$
+
 $$
 \lambda(Y_t) = \lambda_0 \exp(\alpha Y_t)
 $$
+
 $$
 Y_t : 時系列相関を持つ潜在因子
 $$
+
 となり
 
 - exponential decay
@@ -119,14 +122,18 @@ Bayesian 推定
 $$
 X_t | Y_t \sim Poisson(\lambda(Y_t))
 $$
+
 ### 拡張モデル
 $$
 X_t | Y_t \sim NegativeBinomial(\mu(Y_t), \omega)
 $$
+
 ここで
+
 $$
 \mu(Y_t) = \lambda_0 \exp(\alpha Y_t)
 $$
+
 $\omega$ = 過分散パラメータである。
 
 このモデルは
