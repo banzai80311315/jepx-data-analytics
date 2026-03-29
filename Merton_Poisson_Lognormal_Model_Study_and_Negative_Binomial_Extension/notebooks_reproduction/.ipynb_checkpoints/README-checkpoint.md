@@ -109,7 +109,9 @@ $$
 
 --- 
 ## 事前分布の初期値決定法
+
 ### $\lambda_0,\alpha$
+
 ```python
 estimate_poisson_mle
 ```
@@ -123,9 +125,11 @@ estimate_poisson_mle
 restore_latent_y
 ```
 以下で復元
+
 $$
 y_t = \frac{\log k_t - \log {\lambda_0}}{\alpha}
 $$
+
 ### $\theta , \gamma$
 ```python
 fit_acf_exponential
@@ -165,8 +169,7 @@ $$
 $$
 
 $$
-K^{(\mathrm{exp})}_{ij}
-=
+K^{(\mathrm{exp})}_{ij}　=
 \exp\!\left(-\frac{|t_i-t_j|}{l}\right)
 $$
 
