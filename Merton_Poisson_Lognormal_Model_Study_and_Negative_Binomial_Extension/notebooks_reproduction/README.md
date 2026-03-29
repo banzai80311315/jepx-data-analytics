@@ -34,15 +34,15 @@ $$
 
 **実装内容notebooks**
 
-- notebook「01_data_check.ipynb」
+- データ加工
     - Moodys 1920から2018年のデータを確認
     - 分析用に加工
-- notebook 「study_reproduction1_init.ipynb」
+- 初期値決定
     - Poisson-lognormal モデル
     - MLE 推定（$\alpha , \lambda_0$の初期値）
     - 潜在変数復元（$y_t$の初期値）
     - ACF 推定（$\theta , \gamma$の初期値）
-- notebook 「study_reproduction2_bayesian.ipynb」
+- ベイズモデル
     - exponential decayでのベイズ推定
     - power-law decayでのベイズ推定
     - モデル比較（WAIC,LFO）
@@ -287,20 +287,17 @@ y^{(s,r)}_{t+1} \mid \vec{y}^{(s,r)}_{t}
 $$
 
 $$
-\mu_{t+1}^{(s,r)}
-=
+\mu_{t+1}^{(s,r)} =
 k_{t+1,1:t}^{(s)}
-\,
+\ ,
 \big(K_{1:t,1:t}^{(s)}\big)^{-1}
-\,
+\ ,
 \vec{y}_{t}^{(s,r)}
 $$
 
 $$
-\sigma_{t+1}^{2\,(s,r)}
-=
-k_{t+1,t+1}^{(s)}
--
+\sigma_{t+1}^{2\,(s,r)} =
+k_{t+1,t+1}^{(s)} -
 k_{t+1,1:t}^{(s)}
 \,
 \big(K_{1:t,1:t}^{(s)}\big)^{-1}
