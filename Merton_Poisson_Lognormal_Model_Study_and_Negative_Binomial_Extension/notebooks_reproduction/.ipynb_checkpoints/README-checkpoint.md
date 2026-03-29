@@ -52,18 +52,25 @@ $$
 ## モデル
 ### モデル
 潜在マクロ因子の確率モデル$y_t$
+
 $$
 y_t \sim \mathcal{N}(0,1)\ ,\ d_i = \mathbb{E}[y_t y_{t+i}]
 $$
+
 マートンモデル近似後の条件付きデフォルト数分布
+
 $$
 X_t|y_t \sim \text{Poisson}(\lambda_t)\ , \ \lambda_t = \lambda_0 \exp{(\alpha y_t)} \sim \mathcal{LN}(\log \lambda_0 , \alpha^2)
 $$
+
 ただし、
+
 $$
 \alpha^2 = \frac{\rho_A}{1-\rho_A}\beta^2 \ , \ \beta=1.596
 $$
+
 ここで$\rho_A$は、標準化された企業の資産を$U_{it}$($i$は企業、$t$は時間)として
+
 $$
 U_{it} = \sqrt{\rho_A} y_t + \sqrt{1-\rho_A}\epsilon_{it}
 $$
@@ -72,19 +79,27 @@ $$
 
 ### 統計量の理論値
 #### 強度$\lambda_t$
+
 $$
 \mathbb{E}[\lambda_t] = \exp{(\log{\lambda_0} + \frac{\alpha^2}{2})} = \bar{\lambda} \ , \ Var(\lambda_t) = \bar{\lambda}^2 (\exp{\alpha^2}-1) = \bar{V}
 $$
+
 #### 無条件のデフォルト$X_t$
+
 条件付きのデフォルト$X_t|y_t$と期待値の繰り返し公式を利用して
+
 $$
 \mathbb{E}[X_t] = \mathbb{E}[\mathbb{E}[X_t|y_t]] = \mathbb{E}[\lambda_t]
 $$
+
 分散も同様に
+
 $$
 Var(X_t) = \mathbb{E}[Var[X_t|y_t]] + Var[\mathbb{E}[X_t|y_t]] = \mathbb{E}[\lambda_t] + Var[\lambda_t]
 $$
+
 分散比の理論値は
+
 $$
 \frac{Var(X_t)}{\mathbb{E}[X_t]} = 1 + \frac{\bar{V}}{\bar{\lambda}} = 1 + \bar{\lambda} (\exp{\alpha^2}-1)
 $$
@@ -122,6 +137,7 @@ fit_acf_power_law
 - 分散は非線形最小二乗推定の共分散行列
 
 MLEは以下のLOSSを最小とするパラメータを選ぶ
+
 $$
 \text{LOSS} = \sum_{lag} (\hat{\rho}(lag) - d(lag;\theta \ \text{or}\  \gamma))^2
 $$
@@ -207,7 +223,9 @@ $$
 $$
 
 ### 暫定結果
+
 $sc = 5$
+
 | Dataset | $\lambda_0$ (Exp) | $\alpha$ (Exp) | $\theta$ | $\lambda_0$ (Pow) | $\alpha$ (Pow) | $\gamma$ |
 |--------|----------|--------|----|-----------|--------|----|
 | Moody’s ALL | 18.1 (0.4) | 1.6 (0.2) | 0.88 (0.01) | 18.1 (0.4) | 1.3 (0.3) | 0.4 (0.2) |
@@ -215,6 +233,7 @@ $sc = 5$
 | This work (Pow) | -| - | - | 15.554 (2.262) | 1.499 (0.133) | 0.349 (0.090) |
 
 $sc = 1$
+
 | Dataset | $\lambda_0$ (Exp) | $\alpha$ (Exp) | $\theta$ | $\lambda_0$ (Pow) | $\alpha$ (Pow) | $\gamma$ |
 |--------|------------------|----------------|----------|------------------|----------------|----------|
 | Moody’s ALL | 18.1 (0.4) | 1.6 (0.2) | 0.88 (0.01) | 18.1 (0.4) | 1.3 (0.3) | 0.4 (0.2) |
@@ -243,6 +262,7 @@ $$
 = \sum_{t=t_0}^{T-1} 
 \log\left( \int d\theta \ p(x_{t+1} | \theta , \vec{x}) p(\theta | \vec{x})  \right) 
 $$
+
 $$
 \simeq 
 \sum^{T-1}_{t=t_0} \log{ \left(\frac{1}{S} \sum^S_{s=1} 
@@ -250,11 +270,13 @@ $$
 $$
 
 ### Exponential-kernel model
+
 $$
 y^{(s,r)}_{t+1} |  y^{(s,r)}_t  \sim \mathcal{N} (\theta y^{(s,r)}_t , \sqrt{1-\theta^2}\xi_{t+1})\ , \ \xi_t \sim \mathcal{N}(0,1) 
 $$
 
 ### Power-law-kernel model
+
 $$
 y^{(s,r)}_{t+1} \mid \vec{y}^{(s,r)}_{t}
 \sim
